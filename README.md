@@ -12,7 +12,7 @@ The printer driver is `web/js/printer.js`, copied from
 |---|---|---|
 | 🍻 **Do or Drink** | live | Tap **Dare me**, a dare shuffles in and prints. Do it, or drink the sips on the ticket. 1 in 10 pulls is a wild card. |
 | 👑 **Which Andy Are You?** | live | A fake vibe scan, then you get your Andy type (Garden Queen Andy, Hot Sauce Andy, Dog Mom Andy…) with a superpower, weakness, tonight's mission, and Charlie or Farley as sidekick. |
-| 🖍️ **I Was Here!** | live | Type your name, get a colour-in sticker: bubble-outlined "<Name> was here!" with outlined doodles. Pick a tagline and a doodle theme (Party, Spicy, Doggo, Garden, Royal). Every sticker is a fixed 3.5 cm to save paper. Colour it in and stick it on the board. |
+| 🖍️ **I Was Here!** | live | Type your name, get a colour-in sticker: bubble-outlined "<Name> was here!" with outlined doodles. Pick a tagline and a doodle theme (Party, Spicy, Doggo, Garden, Royal). Every sticker is a fixed 3.5 cm to save paper. Colour it in and stick it on the Bar. |
 
 Do or Drink is a kiosk: no players, no scores. The screen resets 25 s after a dare,
 or when someone taps **Done**. Guests pick the heat: 🧊 Chill, 😏 Flirty, 🌶️ Spicy,

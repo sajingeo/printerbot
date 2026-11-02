@@ -1,4 +1,4 @@
-// I Was Here! kiosk: type your name, print a colour-in sticker, stick it on the board.
+// I Was Here! kiosk: type your name, print a colour-in sticker, stick it on the Bar.
 
 import { THEMES, STICKER_HEIGHT, renderSticker } from './sticker-art.js';
 import { ensureFonts } from '../ticket.js';
@@ -128,7 +128,7 @@ async function printSticker(e) {
   setPrintStatus(`🖨️ Printing ${name}'s sticker…`);
   try {
     await printCanvas(art, (sent, total) => setPrintStatus(`🖨️ Printing… ${Math.round((100 * sent) / total)}%`));
-    setPrintStatus('✅ Now grab a marker, colour it in and stick it on the board! 🖍️');
+    setPrintStatus('✅ Now grab a marker, colour it in and stick it on the Bar! 🖍️');
     toast(`Looking good, ${name}! 🖍️`);
     $('stickerName').value = '';
     opts.seed = 1 + Math.floor(Math.random() * 1e6);
