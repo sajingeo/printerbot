@@ -357,22 +357,17 @@ export class AhM2Printer extends EventTarget {
 
   async connect() {
     if (!navigator.bluetooth) throw new Error('Web Bluetooth is not available in this browser.');
-    // The printer advertises only its name, not FFE6. iOS browsers (Bluefy)
-    // scan for the filter's services natively and come up empty, so list
-    // every device there and let the user pick AH-M2.
-    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent)
-      || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    this.device = await navigator.bluetooth.requestDevice(ios
-      ? { acceptAllDevices: true, optionalServices: [SERVICE_UUID] }
-      : {
-        filters: [
-          { namePrefix: 'AH-M2' },
-          { namePrefix: 'AHM2' },
-          { namePrefix: 'AH' },
-          { services: [SERVICE_UUID] },
-        ],
-        optionalServices: [SERVICE_UUID],
-      });
+    // Filter by name only. The printer doesn't advertise FFE6, and a services
+    // filter makes iOS browsers (Bluefy) scan for that service natively and
+    // find nothing.
+    this.device = await navigator.bluetooth.requestDevice({
+      filters: [
+        { namePrefix: 'AH-M2' },
+        { namePrefix: 'AHM2' },
+        { namePrefix: 'AH' },
+      ],
+      optionalServices: [SERVICE_UUID],
+    });
     this.device.addEventListener('gattserverdisconnected', this._onDisconnect);
     this._log(`Connecting to ${this.device.name || this.device.id}…`);
     try {
