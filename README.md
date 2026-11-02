@@ -3,8 +3,10 @@
 Party games for a Bluetooth thermal printer, built for **Andy's Birthday Bash**.
 A tablet sits on the bar, anyone walks up, taps, and the printer spits out a ticket.
 
+**Play it:** https://sajingeo.github.io/printerbot/
+
 The printer driver is `web/js/printer.js`, copied from
-[blethermal](../blethermal) (AH-M2 / XenGro mini printer over Web Bluetooth).
+[blethermal](https://github.com/sajingeo/blethermal) (AH-M2 / XenGro mini printer over Web Bluetooth).
 
 ## Games
 
@@ -25,7 +27,7 @@ All games are kiosks: no players, no scores.
 
 1. Use **Chrome on an Android tablet**. iPads need the Bluefy browser, since Safari
    has no Web Bluetooth.
-2. Open the GitHub Pages URL. Web Bluetooth needs HTTPS (or `localhost`), so a
+2. Open https://sajingeo.github.io/printerbot/. Web Bluetooth needs HTTPS (or `localhost`), so a
    plain `http://<laptop-ip>:8000` from the tablet won't connect to the printer.
 3. Turn the printer on, tap **🖨️ Connect printer**, pick `AH-M2`.
 4. Tap ⚙️ → **Test print**. Adjust **Darkness** if needed.
