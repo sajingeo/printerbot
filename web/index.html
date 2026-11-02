@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7b2ff7">
+<title>Andy's Birthday Bash</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/party.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <span>🎈</span><span>🍻</span><span>🎉</span><span>💖</span><span>🎂</span><span>🍸</span><span>✨</span><span>🥳</span><span>🍾</span><span>💋</span>
+</div>
+
+<header class="topbar">
+  <a href="#" class="brand">🎂 <span>Andy's Bash</span></a>
+  <button id="printerPill" class="pill" data-phase="disconnected">🖨️ Connect printer</button>
+  <button id="settingsBtn" class="icon-btn" title="Printer settings" aria-label="Printer settings">⚙️</button>
+  <button id="fsBtn" class="icon-btn" title="Full screen" aria-label="Full screen">⛶</button>
+</header>
+
+<div id="btWarn" class="banner hidden">
+  <span>🚫 This browser can't talk to the printer. Use <b>Chrome on Android</b> (or <b>Bluefy</b> on iPad). You can still play on screen.</span>
+  <button id="btWarnClose" class="icon-btn" aria-label="Dismiss">✕</button>
+</div>
+
+<main>
+  <!-- ======================================================= hub -->
+  <section id="view-hub" class="view">
+    <div class="hero">
+      <div class="hero-emoji">🥳</div>
+      <h1>Andy's <span class="pop">Birthday</span> Bash</h1>
+      <p>Pick a game. Grab a drink. Let the printer decide your fate. 🖨️✨</p>
+    </div>
+    <div class="games">
+      <a class="game-card live c-pink" href="#do-or-drink">
+        <div class="gc-emoji">🍻</div>
+        <h2>Do or Drink</h2>
+        <p>Pull a dare ticket. Do it… or drink it.</p>
+        <span class="tag">PLAY NOW →</span>
+      </a>
+      <a class="game-card live c-yellow" href="#andy-type">
+        <div class="gc-emoji">👑</div>
+        <h2>Which Andy Are You?</h2>
+        <p>Artist? Lawyer? Hot sauce boss? Find out.</p>
+        <span class="tag">PLAY NOW →</span>
+      </a>
+      <a class="game-card live c-teal" href="#i-was-here">
+        <div class="gc-emoji">🖍️</div>
+        <h2>I Was Here!</h2>
+        <p>Print your name sticker, colour it in, stick it on the board.</p>
+        <span class="tag">PLAY NOW →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======================================================= do or drink -->
+  <section id="view-dod" class="view hidden">
+    <div class="dod-head">
+      <a href="#" class="back">← Games</a>
+      <h1>🍻 Do <span class="or">or</span> Drink 💪</h1>
+    </div>
+
+    <div id="spice" class="spice" role="radiogroup" aria-label="Spice level">
+      <button data-spice="1" role="radio">🧊 Chill</button>
+      <button data-spice="2" role="radio">😏 Flirty</button>
+      <button data-spice="3" role="radio">🌶️ Spicy</button>
+      <button data-spice="mix" role="radio">🎲 Surprise me</button>
+    </div>
+
+    <div class="stage">
+      <div id="dareCard" class="dare-card" data-state="idle">
+        <div class="dc-top"><span id="dcNo"></span><span id="dcSpice"></span></div>
+        <div id="dcText" class="dc-text"></div>
+        <div id="dcSips" class="dc-sips"></div>
+      </div>
+      <div id="printStatus" class="print-status" aria-live="polite"></div>
+      <div class="actions">
+        <button id="dareBtn" class="big-btn">🎲 DARE ME!</button>
+        <button id="doneBtn" class="big-btn done hidden">🎉 DONE! NEXT VICTIM</button>
+        <button id="reprintBtn" class="link-btn hidden">🖨️ Reprint ticket</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= which andy are you -->
+  <section id="view-andy" class="view hidden">
+    <div class="dod-head">
+      <a href="#" class="back">← Games</a>
+      <h1>👑 Which <span class="or">Andy</span> Are You?</h1>
+    </div>
+
+    <div class="stage">
+      <div id="andyCard" class="andy-card" data-state="idle">
+        <div id="andyEmoji" class="andy-emoji">👑</div>
+        <div id="andyKicker" class="andy-kicker"></div>
+        <div id="andyName" class="andy-name"></div>
+        <div id="andyLine" class="andy-line"></div>
+        <div id="andyScan" class="andy-scan hidden"><div id="andyBar" class="andy-bar"></div></div>
+        <div id="andyStats" class="andy-stats hidden">
+          <div><b>⚡ Superpower</b><span id="andyPower"></span></div>
+          <div><b>💔 Weakness</b><span id="andyWeak"></span></div>
+          <div class="mission"><b>🎯 Tonight's mission</b><span id="andyMission"></span></div>
+          <p id="andyMeta" class="andy-meta"></p>
+        </div>
+      </div>
+      <div id="andyPrintStatus" class="print-status" aria-live="polite"></div>
+      <div class="actions">
+        <button id="andyBtn" class="big-btn">🔮 FIND MY ANDY</button>
+        <button id="andyDoneBtn" class="big-btn done hidden">🔁 NEXT PERSON</button>
+        <button id="andyReprintBtn" class="link-btn hidden">🖨️ Reprint certificate</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= i was here -->
+  <section id="view-sticker" class="view hidden">
+    <div class="dod-head">
+      <a href="#" class="back">← Games</a>
+      <h1>🖍️ I Was <span class="or">Here!</span></h1>
+    </div>
+    <p class="sticker-intro">Type your name ✍️ → print your sticker 🖨️ → colour it in 🖍️ → stick it on the board 📌</p>
+
+    <form id="stickerForm" class="sticker-form" autocomplete="off">
+      <input id="stickerName" type="text" maxlength="18" placeholder="Your name…" enterkeyhint="go" autocapitalize="words" spellcheck="false" aria-label="Your name">
+    </form>
+
+    <div class="sticker-opts">
+      <div class="opt-row"><span class="opt-label">Says</span><div id="stickerTaglines" class="spice small" role="radiogroup" aria-label="Tagline"></div></div>
+      <div class="opt-row"><span class="opt-label">Doodles</span><div id="stickerThemes" class="spice small" role="radiogroup" aria-label="Doodle theme"></div></div>
+      <div class="opt-row">
+        <button id="stickerShuffle" type="button" class="chip-action">🎲 Shuffle doodles</button>
+        <button id="stickerSurprise" type="button" class="chip-action">✨ Surprise me</button>
+      </div>
+    </div>
+
+    <div id="stickerPreview" class="sticker-preview">
+      <figure><figcaption>🖨️ Prints like this</figcaption><div id="stickerPlain" class="sheet-paper"></div></figure>
+      <div class="sticker-go">
+        <button id="stickerBtn" class="big-btn" type="submit" form="stickerForm">🖨️ PRINT<br>IT!</button>
+        <p id="stickerLen" class="sticker-len"></p>
+      </div>
+      <figure><figcaption>🖍️ After your crayons</figcaption><div id="stickerColor" class="sheet-paper"></div></figure>
+    </div>
+    <div id="stickerStatus" class="print-status sticker-status" aria-live="polite"></div>
+  </section>
+</main>
+
+<dialog id="printerSheet" class="sheet">
+  <h2>🖨️ Printer</h2>
+  <p id="sheetState" class="muted">Not connected</p>
+  <div class="row">
+    <button id="sheetConnect" class="btn">🔗 Connect</button>
+    <button id="sheetDisconnect" class="btn hidden">Disconnect</button>
+    <button id="testBtn" class="btn">🧪 Test print</button>
+    <button id="feedBtn" class="btn">🧻 Feed paper</button>
+  </div>
+  <label class="slider">Darkness <input id="density" type="range" min="1" max="7" step="1"> <output id="densityOut">4</output></label>
+  <h3>Last ticket (as it prints)</h3>
+  <div id="lastTicket" class="last-ticket muted"></div>
+  <div class="row end"><button class="btn" data-close>Close</button></div>
+</dialog>
+
+<div id="toast" class="toast" role="status"></div>
+<canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

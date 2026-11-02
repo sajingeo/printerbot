@@ -1,0 +1,10 @@
+{
+  "name": "printerbot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test/dares.test.mjs && node test/andy-types.test.mjs",
+    "serve": "python3 -m http.server 8000 -d web",
+    "sync-printer": "cp ../blethermal/web/printer.js web/js/printer.js"
+  }
+}
