@@ -2,9 +2,12 @@
 // See ../docs/PROTOCOL.md for the full description.
 // The pure functions in this file have no browser dependencies, so Node can test them.
 
-export const SERVICE_UUID = 0xffe6;
-export const WRITE_CHAR_UUID = 0xffe1;   // write without response
-export const NOTIFY_CHAR_UUID = 0xffe2;  // notifications from printer
+// Full 128-bit strings, not 16-bit numbers: Bluefy (iOS) JSON-decodes the
+// requestDevice() options natively and rejects numeric UUIDs ("Request payload
+// could not be parsed"). Chrome accepts either form.
+export const SERVICE_UUID = '0000ffe6-0000-1000-8000-00805f9b34fb';
+export const WRITE_CHAR_UUID = '0000ffe1-0000-1000-8000-00805f9b34fb';   // write without response
+export const NOTIFY_CHAR_UUID = '0000ffe2-0000-1000-8000-00805f9b34fb';  // notifications from printer
 
 export const PRINT_WIDTH = 384;          // dots per line
 export const BYTES_PER_LINE = PRINT_WIDTH / 8; // 48
